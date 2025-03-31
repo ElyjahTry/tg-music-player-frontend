@@ -1,23 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import TrackList from "./TrackList";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div style={{ fontFamily: "Arial, sans-serif", backgroundColor: "#f9f9f9", minHeight: "100vh" }}>
+      <header style={{ padding: "2rem", textAlign: "center", backgroundColor: "#222", color: "#fff" }}>
+        <h1>🎧 My Telegram Music</h1>
+        <p style={{ fontStyle: "italic" }}>Слушай MP3 из Telegram в удобном плеере</p>
       </header>
+
+      <main>
+        <TrackList />
+      </main>
     </div>
   );
 }
