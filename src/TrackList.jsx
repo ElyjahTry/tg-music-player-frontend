@@ -15,7 +15,7 @@ function TrackList() {
       .then((data) => setTracks(data.tracks))
       .catch((err) => {
         console.error("Ошибка загрузки треков:", err);
-        setError("Не удалось загрузить треки. Проверь API-сервер.");
+        setError("Не удаётся загрузить треки. Проверь API-сервер.");
       });
   }, []);
 
