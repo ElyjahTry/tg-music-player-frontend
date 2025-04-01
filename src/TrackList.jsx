@@ -4,7 +4,7 @@ function TrackList() {
   const [tracks, setTracks] = useState([]);
 
   useEffect(() => {
-    fetch("https://2460-38-180-36-244.ngrok-free.app/tracks")
+    fetch("https://db35-38-180-36-244.ngrok-free.app/tracks")
       .then((res) => res.json())
       .then((data) => setTracks(data.tracks))
       .catch((err) => console.error("Ошибка загрузки треков:", err));
@@ -28,7 +28,7 @@ function TrackList() {
         >
           {track.cover_file_id && (
             <img
-              src={`https://2460-38-180-36-244.ngrok-free.app/cover/${track.cover_file_id}`}
+              src={`https://db35-38-180-36-244.ngrok-free.app/cover/${track.cover_file_id}`}
               alt="cover"
               width={100}
               height={100}
@@ -39,7 +39,7 @@ function TrackList() {
           <p>👤 {track.performer}</p>
           <p>💿 {track.album || "—"}</p>
           <p>🎭 {track.genre || "—"} | 📅 {track.year || "—"}</p>
-          <audio controls src={`https://2460-38-180-36-244.ngrok-free.app/audio/${track.file_id}`} />
+          <audio controls src={`https://db35-38-180-36-244.ngrok-free.app/audio/${track.file_id}`} />
         </div>
       ))}
     </div>
