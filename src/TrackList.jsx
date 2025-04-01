@@ -2,18 +2,31 @@ import { useEffect, useState } from "react";
 
 function TrackList() {
   const [tracks, setTracks] = useState([]);
+  const [error, setError] = useState(null);
+
+  const API_URL = "https://db35-38-180-36-244.ngrok-free.app";
 
   useEffect(() => {
-    fetch("https://db35-38-180-36-244.ngrok-free.app/tracks")
-      .then((res) => res.json())
+    fetch(`${API_URL}/tracks`)
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        return res.json();
+      })
       .then((data) => setTracks(data.tracks))
-      .catch((err) => console.error("Ошибка загрузки треков:", err));
+      .catch((err) => {
+        console.error("Ошибка загрузки треков:", err);
+        setError("Не удалось загрузить треки. Проверь API-сервер.");
+      });
   }, []);
 
   return (
     <div style={{ padding: "2rem" }}>
       <h1>🎵 Моя библиотека</h1>
-      {tracks.length === 0 && <p>Пока что нет треков 😢</p>}
+
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
+      {tracks.length === 0 && !error && <p>Пока что нет треков 😢</p>}
+
       {tracks.map((track, index) => (
         <div
           key={index}
@@ -28,7 +41,7 @@ function TrackList() {
         >
           {track.cover_file_id && (
             <img
-              src={`https://db35-38-180-36-244.ngrok-free.app/cover/${track.cover_file_id}`}
+              src={`${API_URL}/cover/${track.cover_file_id}`}
               alt="cover"
               width={100}
               height={100}
@@ -39,7 +52,7 @@ function TrackList() {
           <p>👤 {track.performer}</p>
           <p>💿 {track.album || "—"}</p>
           <p>🎭 {track.genre || "—"} | 📅 {track.year || "—"}</p>
-          <audio controls src={`https://db35-38-180-36-244.ngrok-free.app/audio/${track.file_id}`} />
+          <audio controls src={`${API_URL}/audio/${track.file_id}`} />
         </div>
       ))}
     </div>
