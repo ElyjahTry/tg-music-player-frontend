@@ -8,7 +8,6 @@ function App() {
         <h1>🎧 My Telegram Music</h1>
         <p style={{ fontStyle: "italic" }}>Слушай MP3 из Telegram в удобном плеере</p>
       </header>
-
       <main>
         <TrackList />
       </main>
