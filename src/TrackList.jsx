@@ -13,7 +13,7 @@ function TrackList() {
   return (
     <div style={{ padding: "2rem" }}>
       <h1>🎵 Моя библиотека</h1>
-      {tracks.length === 0 && <p>Нет треков 😢</p>}
+      {tracks.length === 0 && <p>Пока что нет треков 😢</p>}
       {tracks.map((track, index) => (
         <div
           key={index}
