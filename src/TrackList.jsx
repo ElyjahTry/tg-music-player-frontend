@@ -4,7 +4,7 @@ function TrackList() {
   const [tracks, setTracks] = useState([]);
   const [error, setError] = useState(null);
 
-  const API_URL = "https://93d4-38-180-36-244.ngrok-free.app";
+  const API_URL = "https://3d1b-38-180-36-244.ngrok-free.app";
 
   useEffect(() => {
     fetch(`${API_URL}/tracks`)
